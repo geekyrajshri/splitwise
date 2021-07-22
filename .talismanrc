@@ -1,0 +1,13 @@
+fileignoreconfig:
+- filename: .idea/$CACHE_FILE$
+  checksum: 3cade54a4f163c4ed0eb4493503b3830f583f59d3baa45ec224cd7bffa11bfdf
+- filename: .idea/codeStyles/Project.xml
+  checksum: 336c083f7483a2d2d85112dc392a3653e51c97b4322c996d3f639baf614cdd19
+- filename: .idea/dbnavigator.xml
+  checksum: 9db3b9ac030b64007e4e19f026e1ed6afc3fd1dfaefb9401491b607cef069fbc
+- filename: .idea/uiDesigner.xml
+  checksum: 18be3885953534e90388d323127b1e8a412d666d9fe4c4b2f315c589933b5f67
+- filename: src/main/java/com/splitwise/controllers/UserController.java
+  checksum: 8f5c1f5b00440a60bdd8542abc82b943c3ace75854310237a5a316e136073c81
+- filename: src/main/java/com/splitwise/models/User.java
+  checksum: a274af5c846ce2f6ea50392d6c1c08b06ae1b23020619b5f9e8a7aa0637c9bcf
