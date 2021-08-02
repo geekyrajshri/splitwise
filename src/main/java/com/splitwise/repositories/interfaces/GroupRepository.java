@@ -1,4 +1,4 @@
-package com.splitwise.repositories;
+package com.splitwise.repositories.interfaces;
 
 import com.splitwise.models.Group;
 

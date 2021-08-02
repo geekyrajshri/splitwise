@@ -1,11 +1,20 @@
 package com.splitwise.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 import java.util.Objects;
 
 public class Auditable {
+    @Getter
+    @Setter
     private Long id;
+    @Getter
+    @Setter
     private Date created;
+    @Getter
+    @Setter
     private Date updated;
 
     @Override
@@ -19,5 +28,12 @@ public class Auditable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Auditable{" +
+                "id=" + id +
+                '}';
     }
 }

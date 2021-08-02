@@ -7,9 +7,10 @@ import com.splitwise.exceptions.authentication.PasswordDoesNotMatchException;
 import com.splitwise.models.Expense;
 import com.splitwise.models.Group;
 import com.splitwise.models.User;
-import com.splitwise.repositories.UserRepository;
+import com.splitwise.repositories.interfaces.UserRepository;
 import com.splitwise.services.authentication.AuthenticationContext;
 import com.splitwise.services.authentication.PasswordEncoder;
+import com.splitwise.services.settle.SettleUserStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,8 @@ import java.util.Set;
 
 public class UserController {
     UserRepository userRepository;
-    PasswordEncoder passwordEncoder=null;
+    PasswordEncoder passwordEncoder;
+    SettleUserStrategy settleUserStrategy;
 
 
     public UserController(UserRepository userRepository){
@@ -26,9 +28,12 @@ public class UserController {
     public void setPasswordEncoder(PasswordEncoder passwordEncoder){
         this.passwordEncoder = passwordEncoder;
     }
+
+    public  void setSettleUserStrategy(SettleUserStrategy settleUserStrategy){
+        this.settleUserStrategy = settleUserStrategy;
+    }
     public User register(UserDTO details) throws DuplicateUsernameException {
         User user = new User();
-
         if(userRepository.findByUsername(details.username).isPresent()){
             throw new DuplicateUsernameException("Username already exists");
         }
@@ -75,8 +80,16 @@ public class UserController {
         return user.getExpenses();
 
     }
-    public List<Group> getMyGroups(AuthenticationContext authenticationContext){
-        return new ArrayList<>();
+    public Set<Group> getMyGroups(AuthenticationContext authenticationContext){
+        User user = authenticationContext.getCurrentLoggedInUser().
+                orElseThrow(()->  new NotLoggedInException("Please login in"));
+        return user.getGroups();
+    }
+
+    public void settleUp(AuthenticationContext authenticationContext){
+        User user = authenticationContext.getCurrentLoggedInUser().
+                orElseThrow(()->  new NotLoggedInException("Please login in"));
+        settleUserStrategy.settle(user);
     }
 }
 

@@ -1,80 +1,56 @@
 package com.splitwise.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Expense extends Auditable {
 
 
-   private String description;
-   private Date date;
-   private boolean isSettled;
+    @Getter
+    @Setter
+    private String description;
 
-   private  List<User> participants;
-   private int totalAmount;
-   private Map<User,Double> paidAmount;
-   private Map<User,Double> owedAmount;
+    @Getter
+    @Setter
+    private Date date;
 
-   public Expense(Date date, String description, List<User> participants) {
-      this.date = date;
-      this.description = description;
-      this.participants = participants;
-   }
+    @Getter
+    @Setter
+    private boolean isSettled;
 
-   public String getDescription() {
-      return description;
-   }
+    @Getter
+    @Setter
+    private Group group;
 
-   public void setDescription(String description) {
-      this.description = description;
-   }
+    @Getter
+    @Setter
+    private Set<User> participants;
 
-   public Date getDate() {
-      return date;
-   }
+    @Getter
+    @Setter
+    private int totalAmount;
 
-   public void setDate(Date date) {
-      this.date = date;
-   }
+    @Getter
+    @Setter
+    private Map<User, Double> paidAmount = new HashMap<>();
 
-   public boolean isSettled() {
-      return isSettled;
-   }
+    @Getter
+    @Setter
+    private Map<User, Double> owedAmount = new HashMap<>();
 
-   public void setSettled(boolean settled) {
-      isSettled = settled;
-   }
+    public Expense(Date date, String description, Set<User> participants) {
+        this.date = date;
+        this.description = description;
+        this.participants = participants;
+    }
 
-   public List<User> getParticipants() {
-      return participants;
-   }
 
-   public void setParticipants(List<User> participants) {
-      this.participants = participants;
-   }
-
-   public int getTotalAmount() {
-      return totalAmount;
-   }
-
-   public void setTotalAmount(int totalAmount) {
-      this.totalAmount = totalAmount;
-   }
-
-   public Map<User, Double> getPaidAmount() {
-      return paidAmount;
-   }
-
-   public void setAmountsPaid(Map<User, Double> paidAmount) {
-      this.paidAmount = paidAmount;
-   }
-
-   public Map<User, Double> getOwedAmount() {
-      return owedAmount;
-   }
-
-   public void setOwedAmount(Map<User, Double> owedAmount) {
-      this.owedAmount = owedAmount;
-   }
+    public void setAmountsPaid(Map<User, Double> amountsPaid) {
+        this.paidAmount =  amountsPaid;
+    }
 }

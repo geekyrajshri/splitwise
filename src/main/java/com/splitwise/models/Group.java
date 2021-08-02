@@ -1,35 +1,40 @@
 package com.splitwise.models;
 
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Group extends Auditable {
 
+
+    @Getter
+    @Setter
     private String name;
 
-    private List<User> members;
-    private List<Expense> expenses;
+    @Getter
+    @Setter
+    private User admin;
 
-    public String getName() {
-        return name;
-    }
+    @Getter
+    @Setter
+    private Set<User> members = new HashSet<>();
 
-    public void setName(String name) {
+    @Setter
+    @Getter
+    private Set<Expense> expenses = new HashSet<>();
+
+    public Group(String name, User admin, Set<User> members) {
         this.name = name;
-    }
-
-    public List<User> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<User> members) {
+        this.admin = admin;
         this.members = members;
     }
 
-    public List<Expense> getExpenses() {
-        return expenses;
-    }
-
-    public void setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
+    @Override
+    public String toString() {
+        return "Group{" +
+                "admin=" + admin +
+                '}';
     }
 }

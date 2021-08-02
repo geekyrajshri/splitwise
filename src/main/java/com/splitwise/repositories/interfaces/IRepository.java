@@ -1,5 +1,6 @@
-package com.splitwise.repositories;
+package com.splitwise.repositories.interfaces;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,7 +9,7 @@ public interface IRepository<E, Id> {
 
     public Optional<E> findById(Id id);
 
-    public List<E> findAll();
+    public ArrayList<E> findAll();
 
     public void save(E user);
 

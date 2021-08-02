@@ -1,8 +1,8 @@
-package com.splitwise.repositories;
+package com.splitwise.repositories.interfaces;
 
 import com.splitwise.models.User;
+import com.splitwise.repositories.interfaces.IRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends IRepository<User,Long> {

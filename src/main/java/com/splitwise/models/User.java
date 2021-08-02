@@ -1,40 +1,32 @@
 package com.splitwise.models;
 
 import com.splitwise.exceptions.validations.InvalidUsernameException;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 public class User extends Auditable {
 
-
+    @Getter
+    @Setter
     private String fullName;
+    @Getter
+    @Setter
     private String password;
+    @Getter
     private String username;
+    @Getter
+    @Setter
     private String phoneNumber;
+    @Getter
+    @Setter
+    private Set<Expense> expenses = new HashSet<>();
+    @Getter
+    @Setter
+    private Set<Group> groups = new HashSet<>();
 
-    private Set<Expense> expenses;
-    private List<Group> groups;
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
 
     public void setUsername(String username) {
         if(username.length()<2){
@@ -43,32 +35,16 @@ public class User extends Auditable {
         this.username = username;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-
-
-    public void setExpenses(Set<Expense> expenses) {
-        this.expenses = expenses;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
-    }
-
-    public Set<Expense> getExpenses() {
-        return expenses;
-    }
-    public Double getTotalOwed(){
+       public Double getTotalOwed(){
         return 0.00;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }
