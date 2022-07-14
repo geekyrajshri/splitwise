@@ -1,0 +1,9 @@
+plugins {
+  id "org.sonarqube" version "3.4.0.2513"
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "personal-github-org_splitwise_AYH3zOys96sokxmgBK2E"
+  }
+}
